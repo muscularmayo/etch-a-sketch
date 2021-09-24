@@ -1,9 +1,8 @@
 //on button click let's create a board of a certain size
 
 const container = document.querySelector('#container')
-const grid = document.querySelector('#grid')
-const pixel = document.createElement('div');
-pixel.innerHTML = 'hello'
+let grid = document.querySelector('#grid')
+
 
 const defaultGrid = function () {
   makeRows(16);
@@ -12,8 +11,6 @@ const defaultGrid = function () {
 window.onload = function () {
   defaultGrid();
 }
-
-
 
 const populateGrid = function (e) {
   const input = prompt('enter a number 1-64')
@@ -28,16 +25,20 @@ const populateGrid = function (e) {
 
 const makeRows = function (num) {
   //add number of rows
+  let grid = document.querySelector('#grid')
+
   for (let i = 0; i < num; i++) {
     let row = document.createElement('div')
     row.id = 'row' + i;
     row.className = 'row'
-    container.appendChild(row);
+    grid.appendChild(row);
 
   }
 }
 
 const makeCells = function (num) {
+  let grid = document.querySelector('#grid')
+
   for (let i = 0; i < num; i++) {
 
     let row = 'row' + i;
@@ -57,10 +58,17 @@ const makeCells = function (num) {
 }
 
 const clearGrid = function() {
-  const rows = document.querySelectorAll('.row')
+  /*const rows = document.querySelectorAll('.row')
   const cells = document.querySelectorAll('.cell')
   cells.parentElement.removeChild(cells)
-  rows.parentElement.removeChild(rows)
+  rows.parentElement.removeChild(rows)*/
+  let grid = document.querySelector('#grid')
+
+  grid.remove()
+  let grid2 = document.createElement('div')
+  grid2.id = 'grid'
+  container.appendChild(grid2);
+
 
 
 
